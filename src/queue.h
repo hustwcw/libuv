@@ -13,6 +13,8 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+// 侵入式双向循环链表实现
+
 #ifndef QUEUE_H_
 #define QUEUE_H_
 
@@ -46,6 +48,7 @@ typedef void *QUEUE[2];
   }                                                                           \
   while (0)
 
+// 将节点n插入到链表h的末尾
 #define QUEUE_ADD(h, n)                                                       \
   do {                                                                        \
     QUEUE_PREV_NEXT(h) = QUEUE_NEXT(n);                                       \
