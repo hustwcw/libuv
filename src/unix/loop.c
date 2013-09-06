@@ -25,14 +25,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdio.h>
 
-
+// loop 初始化
 int uv__loop_init(uv_loop_t* loop, int default_loop) {
   unsigned int i;
   int err;
 
   uv__signal_global_once_init();
 
+//  printf("loop size:%d\n", sizeof(*loop));
   memset(loop, 0, sizeof(*loop));
   RB_INIT(&loop->timer_handles);
   QUEUE_INIT(&loop->wq);

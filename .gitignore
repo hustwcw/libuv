@@ -9,7 +9,18 @@ core
 vgcore.*
 .buildstamp
 
+# add by wang chengwen
+*.Plo
+*.Po
+*.swo
+*.dirstamp
+*.out
+/test/.libs/
+run-tests
+
+
 /.deps/
+/unix/.deps/
 /.libs/
 /aclocal.m4
 /ar-lib

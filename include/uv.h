@@ -263,6 +263,7 @@ UV_EXTERN uv_loop_t* uv_default_loop(void);
 /*
  * This function runs the event loop. It will act differently depending on the
  * specified mode:
+ *  这里的reference count 是什么意思 @wcw
  *  - UV_RUN_DEFAULT: Runs the event loop until the reference count drops to
  *    zero. Always returns zero.
  *  - UV_RUN_ONCE: Poll for new events once. Note that this function blocks if
@@ -550,6 +551,7 @@ UV_EXTERN void uv_close(uv_handle_t* handle, uv_close_cb close_cb);
 UV_EXTERN uv_buf_t uv_buf_init(char* base, unsigned int len);
 
 
+// strncpy 和 strncat都是不安全的
 /*
  * Utility function. Copies up to `size` characters from `src` to `dst`
  * and ensures that `dst` is properly NUL terminated unless `size` is zero.
@@ -731,6 +733,7 @@ UV_EXTERN int uv_tcp_init(uv_loop_t*, uv_tcp_t* handle);
  */
 UV_EXTERN int uv_tcp_open(uv_tcp_t* handle, uv_os_sock_t sock);
 
+// 了解 Nagle算法 @wcw
 /* Enable/disable Nagle's algorithm. */
 UV_EXTERN int uv_tcp_nodelay(uv_tcp_t* handle, int enable);
 

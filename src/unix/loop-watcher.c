@@ -21,7 +21,12 @@
 
 #include "uv.h"
 #include "internal.h"
+#include <stdio.h>
 
+// 这种通过宏定义函数的方式害我搜索不到函数的定义位置，在obj文件中才发现
+// uv_idle_start 在本文件中出现过
+// 搜索命令： grep -r uv_idle_start src/
+// @wcw
 #define UV_LOOP_WATCHER_DEFINE(name, type)                                    \
   int uv_##name##_init(uv_loop_t* loop, uv_##name##_t* handle) {              \
     uv__handle_init(loop, (uv_handle_t*)handle, UV_##type);                   \

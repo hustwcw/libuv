@@ -229,6 +229,7 @@ int uv_is_closing(const uv_handle_t* handle) {
 }
 
 
+// default_loop_ptr 是全局静态变量，实现类似单例的效果
 uv_loop_t* uv_default_loop(void) {
   if (default_loop_ptr)
     return default_loop_ptr;
@@ -240,6 +241,7 @@ uv_loop_t* uv_default_loop(void) {
 }
 
 
+// 创建一个新的loop，和uv_default_loop不同
 uv_loop_t* uv_loop_new(void) {
   uv_loop_t* loop;
 
@@ -301,7 +303,9 @@ int uv_run(uv_loop_t* loop, uv_run_mode mode) {
   int r;
 
   r = uv__loop_alive(loop);
+  // 相当于while(true)啊
   while (r != 0 && loop->stop_flag == 0) {
+    // 空代码有什么用？
     UV_TICK_START(loop, mode);
 
     uv__update_time(loop);

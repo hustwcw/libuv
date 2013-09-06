@@ -66,6 +66,7 @@ typedef void *QUEUE[2];
   }                                                                           \
   while (0)
 
+// 将节点q插入到节点h和其next节点之间
 #define QUEUE_INSERT_HEAD(h, q)                                               \
   do {                                                                        \
     QUEUE_NEXT(q) = QUEUE_NEXT(h);                                            \
@@ -75,6 +76,7 @@ typedef void *QUEUE[2];
   }                                                                           \
   while (0)
 
+// 将节点q插入到节点h和其pre节点之间
 #define QUEUE_INSERT_TAIL(h, q)                                               \
   do {                                                                        \
     QUEUE_NEXT(q) = (h);                                                      \
@@ -84,6 +86,7 @@ typedef void *QUEUE[2];
   }                                                                           \
   while (0)
 
+// 将节点q从双向链表中删除
 #define QUEUE_REMOVE(q)                                                       \
   do {                                                                        \
     QUEUE_PREV_NEXT(q) = QUEUE_NEXT(q);                                       \
